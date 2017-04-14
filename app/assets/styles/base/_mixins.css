@@ -1,0 +1,20 @@
+@define-mixin atSmall {
+	/* 530 px or larger */
+	@media (min-width: 530px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin atMedium {
+	/* 800 px or larger */
+	@media (min-width: 800px) {
+	@mixin-content;
+	}
+}
+
+@define-mixin atLarge {
+	/* 1200 px or larger */
+	@media (min-width: 1200px) {
+	@mixin-content;
+	}	
+}
