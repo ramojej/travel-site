@@ -21,6 +21,7 @@
 		color: #fff;
 		font-weight: 300;
 		text-decoration: none;
+		display: block;
 		padding: 12px 0;
 	}
 }
