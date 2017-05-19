@@ -10402,10 +10402,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var RevealOnScroll = function () {
-	function RevealOnScroll() {
+	function RevealOnScroll(els, offset, animation) {
 		_classCallCheck(this, RevealOnScroll);
 
-		this.itemsToReveal = (0, _jquery2.default)(".feature-item");
+		this.itemsToAnimate = els;
+		this.offsetPercentage = offset;
+		this.animation = animation;
 		this.hideInitially(); //run the method hideInitially when the load pages
 		this.createWaypoints();
 	}
@@ -10413,19 +10415,21 @@ var RevealOnScroll = function () {
 	_createClass(RevealOnScroll, [{
 		key: 'hideInitially',
 		value: function hideInitially() {
-			this.itemsToReveal.addClass("reveal-item");
+			(0, _jquery2.default)(".feature-item").addClass("reveal-item");
 		}
 	}, {
 		key: 'createWaypoints',
 		value: function createWaypoints() {
-			this.itemsToReveal.each(function () {
+			var that = this;
+			var them = this;
+			this.itemsToAnimate.each(function () {
 				var currentItem = this;
 				new Waypoint({
 					element: currentItem,
 					handler: function handler() {
-						(0, _jquery2.default)(currentItem).addClass("reveal-item--is-visible");
+						(0, _jquery2.default)(currentItem).addClass(them.animation);
 					},
-					offset: "85%"
+					offset: that.offsetPercentage
 				});
 			});
 		}
@@ -10451,10 +10455,15 @@ var _RevealOnScroll = __webpack_require__(2);
 
 var _RevealOnScroll2 = _interopRequireDefault(_RevealOnScroll);
 
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mobileMenu = new _MobileMenu2.default();
-var revealOnScroll = new _RevealOnScroll2.default();
+new _RevealOnScroll2.default((0, _jquery2.default)(".feature-item"), "85%", "animated fadeInRight");
+new _RevealOnScroll2.default((0, _jquery2.default)(".testimonial"), "60%", "animated bounce");
 
 /***/ }),
 /* 4 */
